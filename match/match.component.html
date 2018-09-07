@@ -1,0 +1,4 @@
+<li class="list-group-item" *ngFor="let e of events">
+  {{ e.ht }} - {{ e.at }}
+  <button class="btn btn-link" *ngFor="let odd of e.odds; let i = index" (click)="addToSlip(e, odd, i)">{{ odd }}</button>
+</li>

@@ -1,0 +1,22 @@
+<div class="list-group" *ngIf="slip != null">
+    <div class="list-group-item flex-column align-items-start" *ngFor="let bet of slip.bets; let i = index">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ bet.prediction }} {{ bet.odd }}</h5>
+        <span (click)="rmFromSlip(i, bet.odd)" style="cursor: pointer">X</span>
+      </div>
+      <p class="mb-1">{{ bet.event.ht }} v {{ bet.event.at }}</p>
+    </div>
+    <div class="list-group-item" *ngIf="slip.bets.length > 0">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">{{ slip.total | number : '1.2-2' }} x </span>
+            </div>
+            <input type="number" min="0.5" step="0.5" [(ngModel)]="amt" class="form-control" />
+            <div class="input-group-append">
+                <span class="input-group-text">лв.</span>
+            </div>
+          </div>
+          <p *ngIf="amt > 0">Печели: {{ slip.total*amt | number : '1.2-2' }} лв.</p>
+          <button class="btn btn-primary btn-block" (click)="bet()" *ngIf="amt > 0">Заложи {{ amt }} лв.</button>
+    </div>
+  </div>

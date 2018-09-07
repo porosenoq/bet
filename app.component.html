@@ -1,0 +1,16 @@
+<app-navbar [slip]="slip"></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <ul class="list-group">
+                <app-match (addMatchToSlip)="slip=$event"></app-match>
+            </ul>
+        </div>
+        <div class="col-3">
+            <div class="list-group">
+                <app-slip [slip]="slip"></app-slip>
+        </div>
+    </div>
+</div>
+
+
